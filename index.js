@@ -27,10 +27,10 @@ readFilePro(`${__dirname}/dog.txt`, "utf-8", (err, data) => {
   .then((res) => {
     console.log(res.body.message);
 
-    fs.writeFile("dog-image.text", res.body.message, (err) => {
-      if (err) return console.log(err.message);
-      console.log("Random dog image saved to file!");
-    });
+    return writeFilePro("dog-image.text", res.body.message);
+  })
+  .then(() => {
+    console.log("Random image has been founded");
   })
   .catch((err) => {
     console.log(err.message);
